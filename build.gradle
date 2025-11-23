@@ -59,15 +59,22 @@ plugins {
     id 'com.android.application' version '8.1.4' apply false
     id 'com.android.library' version '8.1.4' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.20' apply false
+<<<<<<< HEAD
     id 'com.google.gms.google-services' version '4.4.1' apply false
     id 'com.diffplug.spotless' version '6.25.0' apply false
+=======
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+<<<<<<< HEAD
         maven { url = 'https://jitpack.io' }
+=======
+        maven { url 'https://jitpack.io' }
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
     }
     
     // Common configuration for all modules
@@ -154,6 +161,7 @@ subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             android {
+<<<<<<< HEAD
                 compileSdkVersion = rootProject.ext.compileSdkVersion
                 buildToolsVersion = rootProject.ext.buildToolsVersion
                 
@@ -162,21 +170,42 @@ subprojects {
                     targetSdkVersion = rootProject.ext.targetSdkVersion
                     
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+=======
+                compileSdkVersion rootProject.ext.compileSdkVersion
+                buildToolsVersion rootProject.ext.buildToolsVersion
+                
+                defaultConfig {
+                    minSdkVersion rootProject.ext.minSdkVersion
+                    targetSdkVersion rootProject.ext.targetSdkVersion
+                    
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
                     
                     // Enable vector drawable support for older API levels
                     vectorDrawables.useSupportLibrary = true
                 }
                 
                 compileOptions {
+<<<<<<< HEAD
                     sourceCompatibility = JavaVersion.VERSION_1_8
                     targetCompatibility = JavaVersion.VERSION_1_8
+=======
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
                 }
                 
                 // Lint configuration
                 lintOptions {
+<<<<<<< HEAD
                     abortOnError = false
                     checkReleaseBuilds = false
                     disable += 'InvalidPackage'
+=======
+                    abortOnError false
+                    checkReleaseBuilds false
+                    disable 'InvalidPackage'
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
                 }
                 
                 // Packaging options
@@ -193,7 +222,11 @@ subprojects {
 // Task to generate project report
 task projectReport {
     doLast {
+<<<<<<< HEAD
         println '''
+=======
+        println """
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
         ╔══════════════════════════════════════════════════════════════╗
         ║                    Z-AI Choice Screen                        ║
         ║                  Project Build Report                        ║
@@ -210,6 +243,12 @@ task projectReport {
         ║ • Kotlin: ${kotlin_version}                                      ║
         ║ • AGP: ${agp_version}                                          ║
         ╚══════════════════════════════════════════════════════════════╝
+<<<<<<< HEAD
         '''.stripIndent()
     }
 }
+=======
+        """.stripIndent()
+    }
+}
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6

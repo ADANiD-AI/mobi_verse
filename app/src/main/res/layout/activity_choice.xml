@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:orientation="vertical">
 
     <TextView
@@ -11,3 +12,52 @@
         android:text="Hello World!" />
 
 </LinearLayout>
+=======
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Your Choice"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 1: AI Assistant"
+            android:layout_marginBottom="8dp" />
+
+        <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 2: Data Analysis"
+            android:layout_marginBottom="8dp" />
+
+        <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option 3: Smart Automation"
+            android:layout_marginBottom="8dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Choice" />
+
+</LinearLayout>
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6

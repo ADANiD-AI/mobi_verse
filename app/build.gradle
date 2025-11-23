@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+<<<<<<< HEAD
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
@@ -27,27 +28,50 @@ android {
     defaultConfig {
         applicationId "com.zai.mobiverse"
         minSdk 24
+=======
+}
+
+android {
+    namespace 'com.zai.choicescreen'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zai.choicescreen"
+        minSdk 21
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
         targetSdk 34
         versionCode 1
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         
+<<<<<<< HEAD
+=======
+        // Vector drawable support for older versions
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
         vectorDrawables {
             useSupportLibrary true
         }
     }
 
+<<<<<<< HEAD
     sourceSets {
         main {
             java.srcDirs = ['src/main/java', 'src/main/kotlin']
         }
     }
 
+=======
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+<<<<<<< HEAD
+=======
+            
+            // Signing config for release builds
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
             signingConfig signingConfigs.debug
         }
         debug {
@@ -62,6 +86,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+<<<<<<< HEAD
 
     kotlinOptions {
         jvmTarget = '1.8'
@@ -73,6 +98,12 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion '1.5.3'
+=======
+    
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
     }
     
     packagingOptions {
@@ -85,6 +116,7 @@ android {
         abortOnError false
         checkReleaseBuilds false
     }
+<<<<<<< HEAD
     
     task runCustomTests(type: Exec) {
         commandLine './gradlew', ':app:connectedAndroidTest', '-Pandroid.testInstrumentationRunnerArguments.class=com.mobiverse.nebula.SatelliteMessengerTest'
@@ -132,3 +164,91 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+=======
+}
+
+dependencies {
+    // AndroidX Core Libraries
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity:1.8.2'
+    implementation 'androidx.fragment:fragment:1.6.2'
+    
+    // Material Design
+    implementation 'com.google.android.material:material:1.11.0'
+    
+    // Constraint Layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+    
+    // RecyclerView (if needed for future features)
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    
+    // Lifecycle Components
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.7.0'
+    
+    // Work Manager (for background tasks)
+    implementation 'androidx.work:work-runtime:2.9.0'
+    
+    // Preferences
+    implementation 'androidx.preference:preference:1.2.1'
+    
+    // Navigation (if needed for future features)
+    implementation 'androidx.navigation:navigation-fragment:2.7.6'
+    implementation 'androidx.navigation:navigation-ui:2.7.6'
+    
+    // Room Database (if needed for storing choices/settings)
+    implementation 'androidx.room:room-runtime:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+    
+    // Gson for JSON handling
+    implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // OkHttp for network requests (if needed)
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    
+    // Retrofit for API calls (if needed)
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    
+    // Glide for image loading (if needed)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    
+    // EventBus for communication between components
+    implementation 'org.greenrobot:eventbus:3.3.1'
+    
+    // Timber for logging
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    
+    // LeakCanary for memory leak detection (debug only)
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    
+    // Testing Dependencies
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.8.0'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    
+    // Android Testing
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    
+    // UI Testing
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.5.1'
+    
+    // For testing Room database
+    testImplementation 'androidx.room:room-testing:2.6.1'
+    
+    // For testing Work Manager
+    androidTestImplementation 'androidx.work:work-testing:2.9.0'
+}
+>>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
