@@ -1,8 +1,8 @@
-# Nebula Messenger - Deployment Summary 🚀
+# Mobiverse - Deployment Summary 🚀
 
 **Status: READY FOR DEPLOYMENT AND TESTING**
 
-This document summarizes the deployment-ready state of the Nebula Messenger application.
+This document summarizes the deployment-ready state of the Mobiverse application.
 
 ## 🔮 Core Features
 
