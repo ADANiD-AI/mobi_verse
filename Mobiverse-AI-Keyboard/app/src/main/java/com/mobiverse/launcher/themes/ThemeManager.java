@@ -44,6 +44,7 @@ public class ThemeManager {
         iosTheme.setLayoutStyle(LauncherTheme.LayoutStyle.IOS_STYLE);
         iosTheme.setGridColumns(4);
         iosTheme.setGridRows(6);
+        iosTheme.setNumHomeScreens(5);
         iosTheme.setShowAppNames(true);
         iosTheme.setIconSize(1.0f);
         iosTheme.setPrimaryColor(0xFF007AFF);
@@ -56,6 +57,7 @@ public class ThemeManager {
         windowsTheme.setLayoutStyle(LauncherTheme.LayoutStyle.WINDOWS_METRO);
         windowsTheme.setGridColumns(3);
         windowsTheme.setGridRows(4);
+        windowsTheme.setNumHomeScreens(2);
         windowsTheme.setShowAppNames(true);
         windowsTheme.setIconSize(1.2f);
         windowsTheme.setPrimaryColor(0xFF0078D4);
@@ -68,6 +70,7 @@ public class ThemeManager {
         stockTheme.setLayoutStyle(LauncherTheme.LayoutStyle.ANDROID_STOCK);
         stockTheme.setGridColumns(5);
         stockTheme.setGridRows(5);
+        stockTheme.setNumHomeScreens(3);
         stockTheme.setShowAppNames(true);
         stockTheme.setIconSize(1.0f);
         stockTheme.setPrimaryColor(0xFF1A73E8);
@@ -80,6 +83,7 @@ public class ThemeManager {
         miuiTheme.setLayoutStyle(LauncherTheme.LayoutStyle.MIUI_STYLE);
         miuiTheme.setGridColumns(4);
         miuiTheme.setGridRows(5);
+        miuiTheme.setNumHomeScreens(4);
         miuiTheme.setShowAppNames(true);
         miuiTheme.setIconSize(1.1f);
         miuiTheme.setPrimaryColor(0xFFFF6900);
@@ -92,6 +96,7 @@ public class ThemeManager {
         oneUITheme.setLayoutStyle(LauncherTheme.LayoutStyle.ONE_UI);
         oneUITheme.setGridColumns(4);
         oneUITheme.setGridRows(5);
+        oneUITheme.setNumHomeScreens(3);
         oneUITheme.setShowAppNames(true);
         oneUITheme.setIconSize(1.0f);
         oneUITheme.setPrimaryColor(0xFF1B5CCC);
@@ -104,6 +109,7 @@ public class ThemeManager {
         islamicTheme.setLayoutStyle(LauncherTheme.LayoutStyle.CUSTOM_GRID);
         islamicTheme.setGridColumns(4);
         islamicTheme.setGridRows(5);
+        islamicTheme.setNumHomeScreens(3);
         islamicTheme.setShowAppNames(true);
         islamicTheme.setIconSize(1.0f);
         islamicTheme.setPrimaryColor(0xFF00875A);
@@ -154,7 +160,6 @@ public class ThemeManager {
     }
 
     private void notifyThemeChanged() {
-        // Broadcast theme change to all listeners
         context.sendBroadcast(new android.content.Intent("com.mobiverse.THEME_CHANGED"));
     }
 }

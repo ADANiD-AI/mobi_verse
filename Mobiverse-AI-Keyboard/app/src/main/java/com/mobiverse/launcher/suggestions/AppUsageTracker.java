@@ -1,8 +1,10 @@
 package com.mobiverse.launcher.suggestions;
 
+import android.app.AppOpsManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Comparator;
@@ -17,7 +19,16 @@ public class AppUsageTracker {
         this.usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
     }
 
+    private boolean hasUsageStatsPermission() {
+        AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), context.getPackageName());
+        return mode == AppOpsManager.MODE_ALLOWED;
+    }
+
     public List<UsageStats> getRecentUsageStats() {
+        if (!hasUsageStatsPermission()) {
+            return Collections.emptyList();
+        }
         long endTime = System.currentTimeMillis();
         long beginTime = endTime - (1000 * 60 * 60 * 24); // Last 24 hours
 
@@ -28,6 +39,9 @@ public class AppUsageTracker {
     }
 
     public List<String> getMostUsedApps(int count) {
+        if (!hasUsageStatsPermission()) {
+            return Collections.emptyList();
+        }
         long endTime = System.currentTimeMillis();
         long beginTime = endTime - (1000 * 60 * 60 * 24 * 7); // Last 7 days
 
@@ -38,7 +52,4 @@ public class AppUsageTracker {
                 .map(UsageStats::getPackageName)
                 .collect(Collectors.toList());
     }
-
-    // You might need to request permission for USAGE_STATS
-    // <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
 }

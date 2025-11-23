@@ -25,23 +25,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Swipe Up"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/tv_gesture_action"
+            android:id="@+id/tv_assigned_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Open App Drawer"
-            android:textSize="14sp" />
-
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btn_edit_gesture"
+    <Spinner
+        android:id="@+id/spinner_action"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        android:background="?attr/selectableItemBackgroundBorderless" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

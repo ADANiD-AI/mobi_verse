@@ -67,7 +67,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url = 'https://jitpack.io' }
     }
     
     // Common configuration for all modules
@@ -154,29 +154,29 @@ subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             android {
-                compileSdkVersion rootProject.ext.compileSdkVersion
-                buildToolsVersion rootProject.ext.buildToolsVersion
+                compileSdkVersion = rootProject.ext.compileSdkVersion
+                buildToolsVersion = rootProject.ext.buildToolsVersion
                 
                 defaultConfig {
-                    minSdkVersion rootProject.ext.minSdkVersion
-                    targetSdkVersion rootProject.ext.targetSdkVersion
+                    minSdkVersion = rootProject.ext.minSdkVersion
+                    targetSdkVersion = rootProject.ext.targetSdkVersion
                     
-                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     
                     // Enable vector drawable support for older API levels
                     vectorDrawables.useSupportLibrary = true
                 }
                 
                 compileOptions {
-                    sourceCompatibility JavaVersion.VERSION_1_8
-                    targetCompatibility JavaVersion.VERSION_1_8
+                    sourceCompatibility = JavaVersion.VERSION_1_8
+                    targetCompatibility = JavaVersion.VERSION_1_8
                 }
                 
                 // Lint configuration
                 lintOptions {
-                    abortOnError false
-                    checkReleaseBuilds false
-                    disable 'InvalidPackage'
+                    abortOnError = false
+                    checkReleaseBuilds = false
+                    disable += 'InvalidPackage'
                 }
                 
                 // Packaging options

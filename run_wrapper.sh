@@ -1,0 +1,1 @@
+cd Mobiverse-AI-Keyboard && gradle wrapper

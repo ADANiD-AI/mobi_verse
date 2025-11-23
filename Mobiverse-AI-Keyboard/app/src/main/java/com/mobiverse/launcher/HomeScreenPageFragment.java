@@ -1,5 +1,6 @@
 package com.mobiverse.launcher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.mobiverse.aikeyboard.R;
+import com.mobiverse.messaging.MessagingActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,18 +51,36 @@ public class HomeScreenPageFragment extends Fragment {
         
         rvAppsGrid = view.findViewById(R.id.rv_apps_grid);
         
-        // 4x5 grid (typical Android launcher)
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 4);
         rvAppsGrid.setLayoutManager(layoutManager);
         
-        // Load apps for this page from cloud/local
         List<AppInfo> apps = loadAppsForPage(pageNumber);
         adapter = new AppGridAdapter(apps);
         rvAppsGrid.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(appInfo -> {
+            if ("Messages".equals(appInfo.getLabel())) {
+                Intent intent = new Intent(getActivity(), MessagingActivity.class);
+                startActivity(intent);
+            } else {
+                // Launch other apps
+            }
+        });
     }
 
     private List<AppInfo> loadAppsForPage(int page) {
-        // This will be implemented in a future task.
-        return new ArrayList<>();
+        List<AppInfo> apps = new ArrayList<>();
+        if (page == 0) { // Add to the first page
+            AppInfo messagingApp = new AppInfo();
+            messagingApp.setLabel("Messages");
+            try {
+                messagingApp.setIcon(getContext().getPackageManager().getApplicationIcon("com.google.android.apps.messaging"));
+            } catch (Exception e) {
+                // Set a default icon if messaging app icon is not found
+                messagingApp.setIcon(getContext().getDrawable(R.mipmap.ic_launcher));
+            }
+            apps.add(messagingApp);
+        }
+        return apps;
     }
 }

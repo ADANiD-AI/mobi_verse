@@ -50,6 +50,11 @@
             android:name=".theming.ThemeSettingsActivity"
             android:label="Theme Settings" />
 
+        <activity
+            android:name="com.mobiverse.keyboard.news.NewsActivity"
+            android:label="News Feed"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
     </application>
 
 </manifest>

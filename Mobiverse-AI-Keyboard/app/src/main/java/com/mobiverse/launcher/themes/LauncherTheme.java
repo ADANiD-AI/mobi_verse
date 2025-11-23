@@ -21,6 +21,7 @@ public class LauncherTheme implements Serializable {
     private LayoutStyle layoutStyle;
     private int gridColumns;
     private int gridRows;
+    private int numHomeScreens; // New property
     private boolean showAppNames;
     private float iconSize;
     
@@ -31,28 +32,18 @@ public class LauncherTheme implements Serializable {
     private Map<String, Object> customProperties;
 
     public enum ThemeType {
-        PRESET,           // Built-in themes
-        USER_CREATED,     // User designed
-        DOWNLOADED,       // From store
-        AI_GENERATED      // AI created
+        PRESET, USER_CREATED, DOWNLOADED, AI_GENERATED
     }
 
     public enum LayoutStyle {
-        IOS_STYLE,        // iPhone grid
-        ANDROID_STOCK,    // Classic Android
-        WINDOWS_METRO,    // Windows tiles
-        MIUI_STYLE,       // Xiaomi style
-        ONE_UI,           // Samsung style
-        CUSTOM_GRID,      // User-defined
-        LIST_VIEW,        // Vertical list
-        CATEGORY_BASED    // Apps grouped by category
+        IOS_STYLE, ANDROID_STOCK, WINDOWS_METRO, MIUI_STYLE, ONE_UI, CUSTOM_GRID, LIST_VIEW, CATEGORY_BASED
     }
 
-    // Constructor
     public LauncherTheme(String id, String name) {
         this.id = id;
         this.name = name;
         this.customProperties = new HashMap<>();
+        this.numHomeScreens = 3; // Default value
     }
 
     // Getters and Setters
@@ -69,6 +60,9 @@ public class LauncherTheme implements Serializable {
     
     public int getGridRows() { return gridRows; }
     public void setGridRows(int rows) { this.gridRows = rows; }
+
+    public int getNumHomeScreens() { return numHomeScreens; }
+    public void setNumHomeScreens(int num) { this.numHomeScreens = num; }
     
     public String getWallpaperUrl() { return wallpaperUrl; }
     public void setWallpaperUrl(String url) { this.wallpaperUrl = url; }
