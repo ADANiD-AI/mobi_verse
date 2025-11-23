@@ -17,7 +17,7 @@ dependencyResolutionManagement {
 }
 
 // Project name and modules
-rootProject.name = "Z-AI Choice Screen"
+rootProject.name = "Mobiverse AI Keyboard"
 include ':app'
 
 // Enable Gradle configuration cache for faster builds

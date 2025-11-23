@@ -35,6 +35,16 @@ android {
         }
     }
 
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            val project = "MobiverseAIKeyboard"
+            val SEP = "-"
+            val version = variant.versionName
+            val newApkName = project + SEP + version + ".apk"
+            output.outputFileName = newApkName
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

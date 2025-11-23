@@ -1,4 +1,4 @@
-package com.zai.choicescreen;
+package com.mobiverse.choicescreen;
 
 import android.content.Context;
 

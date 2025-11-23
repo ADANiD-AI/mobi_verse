@@ -47,7 +47,7 @@ Follow these steps to get the project up and running on your local machine.
     *   Select "Open" and navigate to the cloned `mobi_verse` directory.
 3.  **Connect to Firebase:**
     *   Create a new project in the [Firebase Console](https://console.firebase.google.com/).
-    *   Add a new Android app to the project with the package name `com.mobiverse.chat`. (Please verify the package name in your project).
+    *   Add a new Android app to the project with the package name `com.mobiverse.app`. (Please verify the package name in your project).
     *   Download the `google-services.json` file and place it in the `app/` directory.
     *   Enable **Authentication** (e.g., Anonymous), **Firestore**, and **Storage** in the Firebase Console.
 4.  **Build and Run:** Build the app and run it on an emulator or a physical device.
