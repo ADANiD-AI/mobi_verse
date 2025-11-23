@@ -1,48 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-    package="com.zai.mobiverse">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mobiverse.app">
 
+    <!-- Common Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android.label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android.supportsRtl="true"
-        android:name=".MobiverseApp" 
-        android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".ui.NebulaActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-=======
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.zai.choicescreen">
-
-    <!-- Required Permissions -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-    <!-- Optional Permissions -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    
-    <!-- Feature Requirements -->
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-    
+
     <application
+        android:name=".MobiverseApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -50,28 +22,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ChoiceScreen"
-        android:hardwareAccelerated="true"
-        android:largeHeap="true"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
-        
-        <!-- Main Activity -->
+
+        <!-- Main Activity: Choosing one as the primary launcher -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.mobiverse.nebula.ui.NebulaActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.ChoiceScreen.NoActionBar">
->>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-<<<<<<< HEAD
         </activity>
 
+        <!-- Home Screen Launcher Activity -->
         <activity
-            android:name=".launcher.AndroidLauncherActivity"
+            android:name="com.mobiverse.launcher.AndroidLauncherActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:stateNotNeeded="true"
@@ -84,91 +51,40 @@
             </intent-filter>
         </activity>
 
-        <!-- Other components like services and activities -->
-
-    </application>
-
-</manifest>
-=======
-            
-            <!-- Deep Link Support -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="zai" android:host="choicescreen" />
-            </intent-filter>
+        <!-- Other Activities from the merge -->
+        <activity
+            android:name="com.zai.choicescreen.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.ChoiceScreen.NoActionBar">
         </activity>
-        
-        <!-- Choice Screen Overlay Service -->
+
+        <!-- Services -->
         <service
-            android:name=".ChoiceScreenService"
+            android:name="com.zai.choicescreen.ChoiceScreenService"
             android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="mediaProjection"
-            android:stopWithTask="false" />
-        
-        <!-- Boot Receiver (Optional - for auto-start) -->
+            android:exported="false" />
+
+        <!-- Receivers -->
         <receiver
-            android:name=".BootReceiver"
+            android:name="com.zai.choicescreen.BootReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter android:priority="1000">
+            <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        
-        <!-- Choice Action Receiver -->
+
         <receiver
-            android:name=".ChoiceActionReceiver"
+            android:name="com.zai.choicescreen.ChoiceActionReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.zai.choicescreen.CHOICE_MADE" />
             </intent-filter>
         </receiver>
-        
-        <!-- File Provider for sharing/exporting data -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-        
-        <!-- App Shortcuts -->
-        <meta-data
-            android:name="android.app.shortcuts"
-            android:resource="@xml/shortcuts" />
-            
-        <!-- Notification Channels -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_choice_screen" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/primary_color" />
-            
+
     </application>
-    
-    <!-- Queries for package visibility (Android 11+) -->
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="https" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.SEND" />
-            <data android:mimeType="text/plain" />
-        </intent>
-    </queries>
-    
+
 </manifest>
->>>>>>> 55bd7b5c92be6666b58530779ed811bdc8a815e6
