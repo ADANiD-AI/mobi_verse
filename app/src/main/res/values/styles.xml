@@ -1,0 +1,46 @@
+<!-- res/values/styles.xml -->
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- iOS Style Theme -->
+    <style name="AppTheme.iOS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/ios_primary</item>
+        <item name="colorAccent">@color/ios_accent</item>
+    </style>
+
+    <!-- Windows Metro Theme -->
+    <style name="AppTheme.WindowsMetro" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/windows_primary</item>
+        <item name="colorAccent">@color/windows_accent</item>
+    </style>
+
+    <!-- Stock Android Theme -->
+    <style name="AppTheme.StockAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/stock_primary</item>
+        <item name="colorAccent">@color/stock_accent</item>
+    </style>
+
+    <!-- MIUI Style Theme -->
+    <style name="AppTheme.MIUI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/miui_primary</item>
+        <item name="colorAccent">@color/miui_accent</item>
+    </style>
+
+    <!-- One UI Theme -->
+    <style name="AppTheme.OneUI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/one_ui_primary</item>
+        <item name="colorAccent">@color/one_ui_accent</item>
+    </style>
+
+    <!-- Islamic Green Theme -->
+    <style name="AppTheme.IslamicGreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/islamic_primary</item>
+        <item name="colorAccent">@color/islamic_accent</item>
+    </style>
+</resources>

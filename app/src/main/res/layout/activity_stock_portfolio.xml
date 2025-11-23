@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_stock_portfolio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/win_background_dark">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.Material3.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/win_blue_primary"
+            app:title="Stock Portfolio"
+            app:titleTextColor="@color/win_text_on_primary"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:menu="@menu/menu_stock_portfolio" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Summary Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/win_surface_dark"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_portfolio_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Portfolio Value"
+                    android:textColor="@color/win_text_on_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_total_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$0.00"
+                    android:textColor="@color/win_text_on_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_gain_loss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+0.00 (0.00%)"
+                    android:textColor="@color/crypto_green"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
+
+                <!-- Mini time range chips -->
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_1d"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:text="1D"
+                        app:checkedIconVisible="false" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_1w"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:text="1W"
+                        app:checkedIconVisible="false" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_1m"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:text="1M"
+                        app:checkedIconVisible="false" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_1y"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:text="1Y"
+                        app:checkedIconVisible="false" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Top Movers horizontal list (optional) -->
+        <TextView
+            android:id="@+id/tv_top_movers_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Movers"
+            android:textColor="@color/win_text_on_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_top_movers"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/overlay_dark" />
+
+        <!-- Holdings label -->
+        <TextView
+            android:id="@+id/tv_holdings_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Holdings"
+            android:textColor="@color/win_text_on_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <!-- Main holdings list -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_holdings"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="4dp"
+            android:overScrollMode="ifContentScrolls" />
+
+    </LinearLayout>
+
+    <!-- Floating Action Button: Add Stock -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Add Stock"
+        app:srcCompat="@drawable/ic_add"
+        app:backgroundTint="@color/win_gold_primary"
+        app:tint="@color/win_text_on_primary"
+        app:layout_anchor="@id/root_stock_portfolio"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="20dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

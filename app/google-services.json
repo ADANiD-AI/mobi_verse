@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741932978017",
+    "project_id": "viovcan",
+    "storage_bucket": "viovcan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741932978017:android:37a76129eb34b05bdf7f20",
+        "android_client_info": {
+          "package_name": "mobiverse.firebase.google.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741932978017-pcg2ts4h1hhqlpqv0sa2d7fouos8dvi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdBX6jD6ZU7rzwbSuZdrSCQ8Z_5Nln6uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741932978017-pcg2ts4h1hhqlpqv0sa2d7fouos8dvi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

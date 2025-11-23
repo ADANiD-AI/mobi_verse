@@ -1,0 +1,28 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check if the user is the sender
+    function isSender(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // Messages can only be created by the sender
+    // A user can read a message if they are the sender or the receiver
+    match /messages/{messageId} {
+      allow create: if isSender(request.resource.data.senderId);
+      allow read: if isSender(resource.data.senderId) || isSender(resource.data.receiverId);
+      
+      // Users cannot update or delete messages for now to ensure integrity
+      allow update, delete: if false;
+    }
+
+    // Users collection (placeholder for future use)
+    // A user can only read/write their own user document
+    match /users/{userId} {
+      allow read, write: if isSender(userId);
+    }
+  }
+}

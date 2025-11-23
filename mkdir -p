@@ -1,0 +1,1 @@
+mkdir -p src/{data,models,training,inference,utils} configs tests notebooks data/{raw,processed} models

@@ -1,0 +1,134 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.diffplug.spotless'
+}
+
+spotless {
+    java {
+        target 'src/main/java/**/*.java'
+        googleJavaFormat()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+    }
+    xml {
+        target 'src/main/res/**/*.xml'
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+    }
+}
+
+android {
+    namespace 'com.zai.mobiverse'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zai.mobiverse"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/kotlin']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.3'
+    }
+    
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    
+    task runCustomTests(type: Exec) {
+        commandLine './gradlew', ':app:connectedAndroidTest', '-Pandroid.testInstrumentationRunnerArguments.class=com.mobiverse.nebula.SatelliteMessengerTest'
+    }
+}
+
+def anroidxComposeBom = platform('androidx.compose:compose-bom:2024.06.00')
+
+dependencies {
+    // Compose
+    implementation anroidxComposeBom
+    androidTestImplementation anroidxComposeBom
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.ui:ui-tooling-preview"
+    debugImplementation "androidx.compose.ui:ui-tooling"
+    implementation "androidx.compose.material3:material3"
+    implementation 'androidx.activity:activity-compose:1.9.0'
+
+    // AndroidX Core & Lifecycle
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.3'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-firestore-ktx:25.0.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:21.0.0'
+    
+    // Room Database
+    implementation 'androidx.room:room-runtime:2.6.1'
+    implementation 'androidx.room:room-ktx:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
+    
+    // WorkManager
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    // Audio & Encryption
+    implementation 'com.soywiz.korlibs.korau:korau-opus:4.0.0'
+    implementation 'org.signal:libsignal-client:0.58.0'
+
+    // Other
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
