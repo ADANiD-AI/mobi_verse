@@ -5,6 +5,7 @@ import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class AppUsageTracker {
 
@@ -24,6 +25,18 @@ public class AppUsageTracker {
             .stream()
             .sorted((a, b) -> Long.compare(b.getLastTimeUsed(), a.getLastTimeUsed()))
             .collect(Collectors.toList());
+    }
+
+    public List<String> getMostUsedApps(int count) {
+        long endTime = System.currentTimeMillis();
+        long beginTime = endTime - (1000 * 60 * 60 * 24 * 7); // Last 7 days
+
+        return usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime)
+                .stream()
+                .sorted(Comparator.comparingLong(UsageStats::getTotalTimeInForeground).reversed())
+                .limit(count)
+                .map(UsageStats::getPackageName)
+                .collect(Collectors.toList());
     }
 
     // You might need to request permission for USAGE_STATS

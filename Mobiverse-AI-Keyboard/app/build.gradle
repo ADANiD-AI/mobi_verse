@@ -1,6 +1,21 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.diffplug.spotless'
+}
+
+spotless {
+    java {
+        target 'src/main/java/**/*.java'
+        googleJavaFormat()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+    }
+    xml {
+        target 'src/main/res/**/*.xml'
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+    }
 }
 
 android {

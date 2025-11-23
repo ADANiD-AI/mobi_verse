@@ -52,14 +52,16 @@
                         android:src="@drawable/ic_search"
                         android:tint="#757575" />
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/et_search_input_launcher"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="Search apps, web..."
+                        android:hint="Search apps, web..."
                         android:textColor="#757575"
                         android:textSize="16sp"
-                        android:layout_marginStart="12dp" />
+                        android:layout_marginStart="12dp"
+                        android:background="@android:color/transparent"/>
 
                     <ImageView
                         android:id="@+id/iv_google_lens"
@@ -101,7 +103,7 @@
             android:id="@+id/dock_container"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:orientation="horizontal"
+            android.orientation="horizontal"
             android:gravity="center"
             android:paddingHorizontal="16dp"
             android:paddingBottom="8dp"

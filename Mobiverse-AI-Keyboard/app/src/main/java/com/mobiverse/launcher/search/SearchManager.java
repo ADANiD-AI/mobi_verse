@@ -28,11 +28,11 @@ public class SearchManager {
         // You can add more providers here (e.g., for settings, files, web)
     }
 
-    public void performSearch(String query, SearchCallback callback) {
+    public void performSearch(String query, String correctedQuery, SearchCallback callback) {
         executorService.submit(() -> {
             List<SearchProvider.SearchResult> allResults = new ArrayList<>();
             for (SearchProvider provider : searchProviders) {
-                allResults.addAll(provider.query(query));
+                allResults.addAll(provider.query(correctedQuery != null ? correctedQuery : query));
             }
             
             // Post results back to the main thread
