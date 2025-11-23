@@ -92,3 +92,4 @@ Copyright (c) 2024 Muhammad Adnan Ul Mustafa
   <p><strong>Made with ❤️ for the Android community</strong></p>
   <p>⭐ Star this repository if you find it helpful!</p>
 </div>
+gradlew.bat assembleRelease
