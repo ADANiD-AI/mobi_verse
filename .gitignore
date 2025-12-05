@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 keystore.properties
 *.jks
 =======
+=======
+>>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
 # Gradle files
 .gradle
 build/
@@ -20,4 +23,7 @@ local.properties
 # IDE files
 .vscode/
 .DS_Store
+<<<<<<< HEAD
+>>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
+=======
 >>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
