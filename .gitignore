@@ -1,29 +1,26 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-keystore.properties
-*.jks
-=======
-=======
->>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
 # Gradle files
-.gradle
+.gradle/
 build/
 
 # Android Studio
+.idea/
 *.iml
-.idea
-.cxx/
 local.properties
-/app/build
-/captures
 
-# Mobiverse-AI-Keyboard - Add this if you don't want to track it
-/Mobiverse-AI-Keyboard/
+# Keystore files
+*.jks
+*.keystore
+keystore.properties
 
-# IDE files
-.vscode/
+# APK files
+*.apk
+*.aab
+
+# Log files
+*.log
+
+# Other
 .DS_Store
-<<<<<<< HEAD
->>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
-=======
->>>>>>> 330d6db (feat: Configure gitignore and update dev environment)
+
+# Node modules
+node_modules/
