@@ -7,6 +7,7 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.jest
+    pkgs.jdk
     # pkgs.go
     # pkgs.python311
     # pkgs.python311Packages.pip
