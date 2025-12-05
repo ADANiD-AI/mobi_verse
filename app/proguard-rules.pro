@@ -1,35 +1,42 @@
-# Add project specific ProGuard rules here.
-# You can find common rules for libraries on their official websites.
 
-# Keep all model classes (entities) that are used by Room and Firestore
--keep class com.mobiverse.nebula.data.entity.** { *; }
+# Keep all classes in your application's package
+-keep class com.mobiverse.** { *; }
 
-# Keep the names of fields in data classes, as they are used for serialization
--keepnames class com.mobiverse.nebula.data.entity.**
-
-# Firebase and Google Play services
+# Firebase SDK rules
 -keep class com.google.firebase.** { *; }
--keep class com.google.android.gms.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
 -dontwarn com.google.firebase.**
+
+# Google Play Services rules
+-keep class com.google.android.gms.** { *; }
 -dontwarn com.google.android.gms.**
 
-# WorkManager
--keepclassmembers class * extends androidx.work.Worker { 
-    public <init>(android.content.Context, androidx.work.WorkerParameters); 
+# Room rules
+-keep class androidx.room.RoomDatabase { *; }
+-keep class androidx.room.RoomOpenHelper { *; }
+-keep class androidx.room.util.TableInfo { *; }
+-keepclassmembers class * extends androidx.room.RoomDatabase {
+    public *; 
+}
+-keepclassmembers class * extends androidx.room.Entity {
+    public <init>(...);
+    public *;
+}
+-keepclassmembers class * extends androidx.room.Dao {
+    *; 
 }
 
-# General rule for keeping annotation classes
--keep @interface kotlin.Metadata
-
-# Keep setters and getters for data classes used by Firestore
--keepclassmembers,allowobfuscation class * {
-    @com.google.firebase.database.PropertyName <fields>;
+# Keep models (data classes)
+-keepclassmembers class * extends java.lang.Object {
+    @androidx.room.PrimaryKey <fields>;
+    @androidx.room.Embedded <fields>;
+    @androidx.room.Relation <fields>;
+    @androidx.room.ColumnInfo <fields>;
 }
 
-# Room Database
--keep class androidx.room.** { *; }
--dontwarn androidx.room.**
-
-# AndroidX
--keep class androidx.** { *; }
--dontwarn androidx.**
+# Kotlin-specific rules
+-keepattributes Signature
+-keepattributes InnerClasses
+-keep class kotlin.Metadata { *; }
+-dontwarn kotlin.**

@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.mobiverse.app">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Common Permissions -->
+    <!-- Core Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- ADANiD Integration Permissions -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.BIND_VPN_SERVICE" tools:ignore="ProtectedPermissions"/>
+
+
     <application
-        android:name=".MobiverseApp"
+        android:name="com.mobiverse.MobiVerse.Mobiverse"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,65 +28,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" 
         tools:targetApi="31">
 
-        <!-- Main Activity: Choosing one as the primary launcher -->
-        <activity
-            android:name="com.mobiverse.nebula.ui.NebulaActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- Home Screen Launcher Activity -->
+        <!-- ADANiD Hub Dashboard (Main Launcher) -->
         <activity
             android:name="com.mobiverse.launcher.AndroidLauncherActivity"
-            android:label="@string/app_name"
+            android:label="ADANiD Mobile Hub"
             android:launchMode="singleTask"
             android:stateNotNeeded="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <!-- ADANiD Core Modules -->
+        <activity android:name="com.mobiverse.adanid.AdnIDAuthActivity" android:exported="true"/>
+        <activity android:name="com.mobiverse.adanid.QuranLabActivity" android:exported="true"/>
+        <activity android:name="com.mobiverse.adanid.ClarityVaultActivity" android:exported="true"/>
+        <activity android:name="com.mobiverse.adanid.SBTCGatewayActivity" android:exported="true"/>
 
-        <!-- Other Activities from the merge -->
-        <activity
-            android:name="com.zai.choicescreen.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.ChoiceScreen.NoActionBar">
-        </activity>
+        <!-- Existing App Activities -->
+        <activity android:name="com.mobiverse.activities.NewsFeedActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.browser.BrowserActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.calls.VoiceCallActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.islamic.MosqueFinderActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.messaging.MessagingActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.nebula.ui.NebulaActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.MobiVerse.TasbihActivity" android:exported="true" />
+        <activity android:name="com.mobiverse.MobiVerse.StockPortfolioActivity" android:exported="true" />
 
         <!-- Services -->
         <service
-            android:name="com.zai.choicescreen.ChoiceScreenService"
+            android:name="com.mobiverse.choicescreen.ChoiceScreenService"
             android:enabled="true"
             android:exported="false" />
+        <service 
+            android:name="com.mobiverse.aikeyboard.AIKeyboardService"
+            android:label="ADANiD AI Keyboard"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+        </service>
+        <service android:name="com.mobiverse.satellite.FloatingSatelliteService" android:exported="false"/>
+        <service android:name="com.mobiverse.MobiVerse.MobiverseVPN"
+                 android:permission="android.permission.BIND_VPN_SERVICE"
+                 android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.VpnService"/>
+            </intent-filter>
+        </service>
 
         <!-- Receivers -->
         <receiver
-            android:name="com.zai.choicescreen.BootReceiver"
+            android:name="com.mobiverse.choicescreen.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <receiver
-            android:name="com.zai.choicescreen.ChoiceActionReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.zai.choicescreen.CHOICE_MADE" />
             </intent-filter>
         </receiver>
 
